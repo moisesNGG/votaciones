@@ -1,71 +1,60 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Candidato } from "../components/VotacionLogica";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import { Candidato } from "./VotacionLogica";
 
 type Props = {
   candidatos: Candidato[];
+  totalVotos: number;
 };
 
-const Resultado: React.FC<Props> = ({ candidatos }) => {
-  const total = candidatos.reduce((t, c) => t + c.votos, 0);
-
-  const data = {
-    labels: candidatos.map((c) => c.nombre),
-    datasets: [
-      {
-        label: "Votos",
-        data: candidatos.map((c) => c.votos),
-        backgroundColor: ["#4e79a7", "#f28e2b", "#e15759"],
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: { display: false },
-      title: { display: true, text: "Resultados" },
-    },
-    scales: {
-      y: { beginAtZero: true, ticks: { precision: 0 } },
-    },
-  };
-
+const Resultado: React.FC<Props> = ({ candidatos, totalVotos }) => {
   return (
-    <div style={{ maxWidth: "600px", margin: "20px auto" }}>
-      <Bar data={data} options={options} />
-      <div style={{ marginTop: "10px" }}>
-        {candidatos.map((c) => (
-          <div
-            key={c.id}
-            style={{ display: "flex", justifyContent: "space-between" }}
-          >
-            <span>{c.nombre}</span>
-            <span>
-              {c.votos} votos{" "}
-              {total > 0 ? `(${((c.votos / total) * 100).toFixed(1)}%)` : ""}
-            </span>
-          </div>
-        ))}
-      </div>
+    <div className="resultado-votacion">
+      <h2>Resultados de la votación</h2>
+      {totalVotos === 0 ? (
+        <p>No hay votos aún.</p>
+      ) : (
+        <div>
+          {candidatos.map((candidato) => {
+            const porcentaje =
+              totalVotos === 0 ? 0 : (candidato.votos / totalVotos) * 100;
+            return (
+              <div key={candidato.id} style={{ marginBottom: 16 }}>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <strong>{candidato.nombre}</strong>
+                  <span>
+                    {candidato.votos} votos ({porcentaje.toFixed(1)}%)
+                  </span>
+                </div>
+                <div
+                  style={{
+                    height: 20,
+                    width: "100%",
+                    backgroundColor: "#eee",
+                    borderRadius: 8,
+                    overflow: "hidden",
+                    marginTop: 4,
+                  }}
+                >
+                  <div
+                    style={{
+                      height: "100%",
+                      width: `${porcentaje}%`,
+                      backgroundColor: "#4caf50",
+                      borderRadius: 8,
+                      transition: "width 0.5s ease",
+                    }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+          <p>
+            <strong>Total de votos:</strong> {totalVotos}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
