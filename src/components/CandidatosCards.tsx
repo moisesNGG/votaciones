@@ -1,6 +1,6 @@
-import React from 'react';
-import '../styles/App.css';
-import { Candidato } from './VotacionLogica';
+import React from "react";
+import "../styles/App.css";
+import { Candidato } from "./VotacionLogica";
 
 type Props = {
   candidato: Candidato;
@@ -8,9 +8,21 @@ type Props = {
   deshabilitar: boolean;
 };
 
-const CandidatosCards: React.FC<Props> = ({ candidato, votar, deshabilitar }) => {
+const CandidatosCards: React.FC<Props> = ({
+  candidato,
+  votar,
+  deshabilitar,
+}) => {
   return (
     <div className="card-candidato">
+      {/* Imagen */}
+      {candidato.imagen && (
+        <img
+          src={candidato.imagen}
+          alt={`Foto de ${candidato.nombre}`}
+          className="imagen-candidato"
+        />
+      )}
       <h3>{candidato.nombre}</h3>
       <p>Votos: {candidato.votos}</p>
       <button

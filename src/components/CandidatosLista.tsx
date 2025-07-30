@@ -1,14 +1,14 @@
-import React from 'react';
-import { useVotacion } from './VotacionLogica';
-import '../styles/App.css';
-import CandidatosCards from './CandidatosCards';
+import React from "react";
+import { useVotacion } from "./VotacionLogica";
+import "../styles/App.css";
+import CandidatosCards from "./CandidatosCards";
 
 const CandidatosLista: React.FC = () => {
   const {
     listaDeCandidatos,
     funcionParaVotar,
     usuarioYaHaVotado,
-    cantidadTotalDeVotos
+    cantidadTotalDeVotos,
   } = useVotacion();
 
   return (
@@ -17,7 +17,7 @@ const CandidatosLista: React.FC = () => {
       <div className="grid-cards">
         {listaDeCandidatos.map((candidato) => (
           <CandidatosCards
-            key={candidato.id}
+            key={candidato.nombre}
             candidato={candidato}
             votar={funcionParaVotar}
             deshabilitar={usuarioYaHaVotado}
