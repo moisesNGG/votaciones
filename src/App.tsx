@@ -19,7 +19,7 @@ const App: React.FC = () => {
         }}
       >
         <h1 style={{ color: "#58a6ff", fontSize: "2.5rem", margin: 0 }}>
-          Votaciones 2025
+          VOTAPP - Votaciones 2025
         </h1>
       </header>
       <main className="App-content">
