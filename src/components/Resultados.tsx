@@ -7,7 +7,6 @@ type Props = {
 };
 
 const Resultado: React.FC<Props> = ({ candidatos, totalVotos }) => {
-<<<<<<< HEAD
   const maxVotos = Math.max(...candidatos.map((c) => c.votos));
   const empatados = candidatos.filter(
     (c) => c.votos === maxVotos && totalVotos > 0
@@ -23,22 +22,12 @@ const Resultado: React.FC<Props> = ({ candidatos, totalVotos }) => {
           con {maxVotos} votos
         </p>
       )}
-=======
-  return (
-    <div className="resultado-votacion">
-      <h2>Resultados de la votación</h2>
->>>>>>> 762f51eac055a92e87611a1618f018df519940a5
       {totalVotos === 0 ? (
         <p>No hay votos aún.</p>
       ) : (
         <div>
           {candidatos.map((candidato) => {
-<<<<<<< HEAD
             const porcentaje = (candidato.votos / totalVotos) * 100;
-=======
-            const porcentaje =
-              totalVotos === 0 ? 0 : (candidato.votos / totalVotos) * 100;
->>>>>>> 762f51eac055a92e87611a1618f018df519940a5
             return (
               <div key={candidato.id} style={{ marginBottom: 16 }}>
                 <div
