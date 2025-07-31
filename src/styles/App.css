@@ -1,124 +1,538 @@
-body {
-  background-color: #0d1117;
-  color: #ffffff;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+/* Reset y configuración base */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.lista-candidatos {
+body {
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+  color: #f0f6fc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Contenedor principal de la aplicación */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header mejorado */
+.app-header {
+  background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+  border-bottom: 1px solid #30363d;
+  padding: 16px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title h1 {
+  color: #58a6ff;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.header-title p {
+  color: #8b949e;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Contenido principal */
+.app-main {
+  flex: 1;
   padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .app-main {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Sección de votación */
+.voting-section {
+  background: rgba(22, 27, 34, 0.8);
+  border: 1px solid #30363d;
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Sección de resultados */
+.results-section {
+  background: rgba(22, 27, 34, 0.8);
+  border: 1px solid #30363d;
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  height: fit-content;
+}
+
+/* Lista de candidatos mejorada */
+.lista-candidatos {
   text-align: center;
 }
 
 .titulo {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin-bottom: 30px;
   color: #58a6ff;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(88, 166, 255, 0.3);
 }
 
 .grid-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
+  margin-bottom: 30px;
 }
 
+/* Tarjetas de candidatos mejoradas */
 .card-candidato {
-  background-color: #161b22;
+  background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
   border: 1px solid #30363d;
-  border-radius: 12px;
-  padding: 20px;
-  width: 260px;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-candidato::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #58a6ff, #1f6feb);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.card-candidato:hover::before {
+  transform: scaleX(1);
 }
 
 .card-candidato:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 14px rgba(88, 166, 255, 0.5);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(88, 166, 255, 0.2);
+  border-color: #58a6ff;
+}
+
+.imagen-candidato {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 16px;
+  display: block;
+  border: 3px solid #30363d;
+  transition: all 0.3s ease;
+}
+
+.card-candidato:hover .imagen-candidato {
+  border-color: #58a6ff;
+  box-shadow: 0 8px 24px rgba(88, 166, 255, 0.3);
 }
 
 .card-candidato h3 {
-  font-size: 1.6rem;
-  color: #58a6ff;
-  margin: 0 0 10px;
+  font-size: 1.4rem;
+  color: #f0f6fc;
+  margin: 0 0 8px;
+  font-weight: 600;
 }
 
 .card-candidato p {
-  font-size: 1.1rem;
-  color: #c9d1d9;
-  margin-bottom: 16px;
+  font-size: 1rem;
+  color: #8b949e;
+  margin-bottom: 20px;
 }
 
+/* Botón votar mejorado */
 .btn-votar {
-  background-color: #14c2ae;
-  color: #ffffff;
-  padding: 10px 20px;
+  background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+  color: white;
+  padding: 12px 24px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(46, 160, 67, 0.3);
 }
 
 .btn-votar:hover:not(:disabled) {
-  background-color: #0a989b;
+  background: linear-gradient(135deg, #2ea043 0%, #238636 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(46, 160, 67, 0.4);
+}
+
+.btn-votar:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .btn-votar:disabled {
-  background-color: #555;
+  background: linear-gradient(135deg, #6e7681 0%, #8b949e 100%);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
+/* Total de votos */
 .total-votos {
   margin-top: 30px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  color: #58a6ff;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Resultados mejorados */
+.resultado-votacion {
+  text-align: left;
+}
+
+.resultado-votacion h2 {
+  font-size: 1.8rem;
+  color: #58a6ff;
+  margin-bottom: 24px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Estadísticas generales */
+.estadisticas-generales {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  justify-content: center;
+}
+
+.stat-item {
+  background: rgba(13, 17, 23, 0.6);
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 12px 20px;
+  text-align: center;
+  min-width: 80px;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #58a6ff;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #8b949e;
+  margin-top: 2px;
+}
+
+/* Alerta de empate */
+.empate-alert {
+  background: rgba(210, 153, 34, 0.1);
+  border: 1px solid #d29922;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.empate-alert h3 {
+  color: #d29922;
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+}
+
+.empate-alert p {
+  color: #f0f6fc;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Sin votos */
+.no-votos {
+  text-align: center;
+  padding: 40px 20px;
   color: #8b949e;
 }
 
-.resultado-container {
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 12px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+.no-votos-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
 }
 
-.resultado-label {
-  font-size: 1rem;
-  color: #c9d1d9;
-  margin-bottom: 4px;
+.no-votos h3 {
+  color: #f0f6fc;
+  margin-bottom: 8px;
 }
 
-.resultado-barra {
-  height: 12px;
-  background-color: #1f6feb;
-  border-radius: 6px;
+.no-votos p {
+  font-size: 0.95rem;
 }
 
-.App-content {
+/* Lista de resultados */
+.resultados-lista {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
+  gap: 16px;
 }
 
-@media (max-width: 600px) {
-  .grid-cards {
+.resultado-candidato {
+  padding: 16px;
+  background: rgba(13, 17, 23, 0.6);
+  border-radius: 12px;
+  border: 1px solid #30363d;
+  transition: all 0.3s ease;
+}
+
+.resultado-candidato.ganador {
+  border-color: #ffd700;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+}
+
+.resultado-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.resultado-posicion {
+  font-size: 1.2rem;
+  min-width: 30px;
+  text-align: center;
+}
+
+.resultado-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultado-nombre {
+  font-weight: 600;
+  color: #f0f6fc;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.winner-badge {
+  background: #ffd700;
+  color: #0d1117;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.resultado-votos {
+  color: #8b949e;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.barra-progreso {
+  height: 8px;
+  background-color: #30363d;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.barra-progreso-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #238636, #2ea043);
+  border-radius: 4px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.barra-progreso-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Resumen de votación */
+.resumen-votacion {
+  margin-top: 24px;
+  padding: 16px;
+  background: rgba(13, 17, 23, 0.4);
+  border-radius: 8px;
+  border: 1px solid #30363d;
+}
+
+.resumen-votacion h4 {
+  color: #58a6ff;
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+}
+
+.resumen-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resumen-label {
+  color: #8b949e;
+  font-size: 0.9rem;
+}
+
+.resumen-value {
+  color: #f0f6fc;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Footer */
+.app-footer {
+  background: #161b22;
+  border-top: 1px solid #30363d;
+  padding: 20px;
+  text-align: center;
+  color: #8b949e;
+  font-size: 0.9rem;
+}
+
+.app-footer p {
+  margin: 4px 0;
+}
+
+/* Loading */
+.loading-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  color: #f0f6fc;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #30363d;
+  border-top: 4px solid #58a6ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-main {
+    padding: 20px 16px;
+    gap: 30px;
+  }
+  
+  .voting-section,
+  .results-section {
+    padding: 20px;
+  }
+  
+  .header-content {
     flex-direction: column;
-    align-items: center;
+    gap: 16px;
+    text-align: center;
   }
-
+  
+  .header-title h1 {
+    font-size: 1.6rem;
+  }
+  
+  .titulo {
+    font-size: 1.8rem;
+  }
+  
+  .grid-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
   .card-candidato {
-    width: 90%;
+    padding: 20px;
   }
+  
+  .imagen-candidato {
+    width: 100px;
+    height: 100px;
+  }
+}
 
-  .resultado-container {
-    width: 90%;
+@media (max-width: 480px) {
+  .app-main {
+    padding: 16px 12px;
+  }
+  
+  .voting-section,
+  .results-section {
+    padding: 16px;
+  }
+  
+  .card-candidato {
+    padding: 16px;
+  }
+  
+  .imagen-candidato {
+    width: 80px;
+    height: 80px;
   }
 }

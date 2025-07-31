@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/App.css";
-import { Candidato } from "./VotacionLogica";
+import { Candidato } from "../types/types";
 
 type Props = {
   candidato: Candidato;

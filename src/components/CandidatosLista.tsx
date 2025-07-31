@@ -1,5 +1,5 @@
 import React from "react";
-import { useVotacion } from "./VotacionLogica";
+import { useVotacion } from "../context/VotacionContext";
 import "../styles/App.css";
 import CandidatosCards from "./CandidatosCards";
 
