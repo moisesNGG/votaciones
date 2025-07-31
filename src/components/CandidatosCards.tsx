@@ -24,6 +24,9 @@ const CandidatosCards: React.FC<Props> = ({
         />
       )}
       <h3>{candidato.nombre}</h3>
+      {candidato.partido && (
+        <p className="partido-candidato">{candidato.partido}</p>
+      )}
       <p>Votos: {candidato.votos}</p>
       <button
         onClick={() => votar(candidato.id)}

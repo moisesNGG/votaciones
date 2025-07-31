@@ -8,7 +8,7 @@
 body {
   background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
   color: #f0f6fc;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
   line-height: 1.6;
 }
@@ -125,7 +125,7 @@ body {
 }
 
 .card-candidato::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -177,7 +177,7 @@ body {
 
 /* Botón votar mejorado */
 .btn-votar {
-  background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+  background: linear-gradient(135deg, #2797c4 0%, #3985ad 100%);
   color: white;
   padding: 12px 24px;
   border: none;
@@ -191,7 +191,7 @@ body {
 }
 
 .btn-votar:hover:not(:disabled) {
-  background: linear-gradient(135deg, #2ea043 0%, #238636 100%);
+  background: linear-gradient(135deg, #125276 0%, #1aa3c5a4 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(46, 160, 67, 0.4);
 }
@@ -383,19 +383,28 @@ body {
 }
 
 .barra-progreso-fill::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   animation: shimmer 2s infinite;
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* Resumen de votación */
@@ -472,8 +481,12 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive Design */
@@ -482,35 +495,35 @@ body {
     padding: 20px 16px;
     gap: 30px;
   }
-  
+
   .voting-section,
   .results-section {
     padding: 20px;
   }
-  
+
   .header-content {
     flex-direction: column;
     gap: 16px;
     text-align: center;
   }
-  
+
   .header-title h1 {
     font-size: 1.6rem;
   }
-  
+
   .titulo {
     font-size: 1.8rem;
   }
-  
+
   .grid-cards {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .card-candidato {
     padding: 20px;
   }
-  
+
   .imagen-candidato {
     width: 100px;
     height: 100px;
@@ -521,16 +534,16 @@ body {
   .app-main {
     padding: 16px 12px;
   }
-  
+
   .voting-section,
   .results-section {
     padding: 16px;
   }
-  
+
   .card-candidato {
     padding: 16px;
   }
-  
+
   .imagen-candidato {
     width: 80px;
     height: 80px;

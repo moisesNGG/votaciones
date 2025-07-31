@@ -8,30 +8,44 @@ const candidatosIniciales: Candidato[] = [
   {
     id: 1,
     nombre: "Daniel Noboa",
-    votos: 0,
+    votos: 145,
     partido: "Acción Democrática Nacional",
     color: "#1e88e5",
   },
   {
     id: 2,
     nombre: "Donald Trump",
-    votos: 0,
+    votos: 1230,
     partido: "Partido Republicano",
     color: "#d32f2f",
   },
   {
     id: 3,
     nombre: "Vladimir Putin",
-    votos: 0,
+    votos: 120,
     partido: "Rusia Unida",
     color: "#388e3c",
   },
   {
     id: 4,
     nombre: "Nicolás Maduro",
-    votos: 0,
+    votos: 9999,
     partido: "Maduro Socialista",
     color: "#6a1b9a",
+  },
+  {
+    id: 5,
+    nombre: "Roberto Garcia",
+    votos: 4234,
+    partido: "Capas de la Democracia",
+    color: "#6a1b9a",
+  },
+  {
+    id: 6,
+    nombre: "Framework Castro",
+    votos: 4235,
+    partido: "Frameworks de la Revolución",
+    color: "#769a1bff",
   },
 ];
 

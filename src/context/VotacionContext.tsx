@@ -15,6 +15,8 @@ import noboaImg from "../imagenes/noboa.jpeg";
 import trumpImg from "../imagenes/trump.jpeg";
 import putinImg from "../imagenes/putin.jpeg";
 import maduroImg from "../imagenes/maduro.jpeg";
+import robertoImg from "../imagenes/roberto.jpeg";
+import castroImg from "../imagenes/santiago.jpeg";
 
 // Mapeo de imágenes por ID
 const imageMap: { [key: number]: string } = {
@@ -22,6 +24,8 @@ const imageMap: { [key: number]: string } = {
   2: trumpImg,
   3: putinImg,
   4: maduroImg,
+  5: robertoImg,
+  6: castroImg,
 };
 
 // Interfaz del contexto
